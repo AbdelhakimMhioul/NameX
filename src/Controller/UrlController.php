@@ -26,14 +26,6 @@ class UrlController extends AbstractController
         $this->urlStatisticService = $urlStatisticService;
     }
 
-    #[Route('/url', name: 'url')]
-    public function index(): Response
-    {
-        return $this->render('url/index.html.twig', [
-            'controller_name' => 'UrlController',
-        ]);
-    }
-
     #[Route('/ajax/shorten', name: 'url_add')]
     public function add(Request $request): Response
     {

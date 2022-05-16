@@ -3,17 +3,15 @@ const shortenCard = document.querySelector('#shortenCard');
 const inputUrl = document.querySelector('#url');
 const btnShortenUrl = document.querySelector('#btnShortenUrl');
 
-const URL_SHORTEN = '/ajax/shorten';
-
 const errorMessages = {
-    'INVALID_ARG_URL': "Impossible de raccourcir ce lien. Ce n'est pas une URL valide",
-    'MISSING_ARG_URL': "Veuillez fournir une URL valide"
+    'INVALID_ARG_URL': "Impossible to shorten this link. It is not a valid url",
+    'MISSING_ARG_URL': "Please provide a valid URL"
 }
 
 form.addEventListener('submit', function(e) {
     e.preventDefault();
 
-    fetch(URL_SHORTEN, {
+    fetch('/ajax/shorten', {
         method: 'POST',
         body: new FormData(e.target)
     })
@@ -22,12 +20,13 @@ form.addEventListener('submit', function(e) {
 });
 
 const handleData = function(data) {
+    // ERROR
     if (data.statusCode >= 400) {
         return handleError(data);
     }
 
     inputUrl.value = data.link;
-    btnShortenUrl.innerText = "Copier";
+    btnShortenUrl.innerText = "Copy";
 
     btnShortenUrl.addEventListener('click', function(e) {
        e.preventDefault();
@@ -35,7 +34,7 @@ const handleData = function(data) {
        inputUrl.select();
        document.execCommand('copy');
 
-       this.innerText = "Réduire l'URL";
+       this.innerText = "Shorten URL";
     }, { once: true });
 }
 

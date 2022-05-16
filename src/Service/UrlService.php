@@ -38,7 +38,9 @@ class UrlService
         $url->setUser($user);
         $url->setCreatedAt(new \DateTime);
 
+        // Save Data
         $this->em->persist($url);
+        // Flush Data (Transfer it from RAM to Hard Disk)
         $this->em->flush();
 
         return $url;
@@ -51,7 +53,7 @@ class UrlService
         if (!$url) {
             return new JsonResponse([
                 'statusCode' => 'URL_NOT_FOUND',
-                'statusText' => "Le lien n'a pas été trouvé !"
+                'statusText' => "The link was not found !"
             ]);
         }
 
@@ -60,7 +62,7 @@ class UrlService
 
         return new JsonResponse([
             'statusCode' => 'DELETE_SUCCESSFUL',
-            'statusText' => 'Le lien a bien été supprimé !'
+            'statusText' => 'The link has been deleted successfully !'
         ]);
     }
 
@@ -68,10 +70,12 @@ class UrlService
     {
         $domain = parse_url($url, PHP_URL_HOST);
 
+        // If the domain doesn't exist
         if (!$domain) {
             return false;
         }
 
+        // Specify if the domain is a valid IP address
         if (!filter_var(gethostbyname($domain), FILTER_VALIDATE_IP)) {
             return false;
         }
