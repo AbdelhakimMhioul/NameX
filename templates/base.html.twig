@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Raccourcisseur d'URL - {% block title %}{% endblock %}</title>
+
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </head>
+    <body>
+
+        <header>
+            <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">Raccourcisseur d'URL</a>
+
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+
+                        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="{{ path('app_homepage') }}">Accueil</a>
+                            </li>
+                            <li class="nav-item">
+                                {% if is_granted('IS_AUTHENTICATED_FULLY') and app.user.urls.count > 0 %}
+                                    <a class="nav-link" href="{{ path('url_list') }}">Mes liens</a>
+                                {% endif %}
+                            </li>
+                        </ul>
+
+                        <div class="d-flex">
+                            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                                <a class="btn btn-outline-danger me-2" href="{{ path('app_logout') }}">Déconnexion</a>
+                            {% else %}
+                                <a class="btn btn-outline-success me-2" href="{{ path('app_login') }}">Connexion</a>
+                                <a class="btn btn-success" href="{{ path('app_register') }}">Inscription</a>
+                            {% endif %}
+
+                        </div>
+
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        {% block body %}{% endblock %}
+    </body>
+</html>

@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+    <main>
+
+        <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="overlay-image" style="background-image: url('images/slide.jpg');"></div>
+                <div class="carousel-item active">
+                    <div class="container">
+                        <div class="carousel-caption text-start">
+                            <h1>Le meilleur raccourcisseur d'URL.</h1>
+                            <p>Un raccourcisseur d'URL conçu avec des outils puissants pour vous aider à développer et à protéger votre marque.</p>
+
+                            {% if is_granted('IS_ANONYMOUS') %}
+                                <p><a class="btn btn-lg btn-primary" href="#">Inscription</a></p>
+                            {% endif %}
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Marketing messaging and featurettes
+        ================================================== -->
+        <!-- Wrap the rest of the page in another container to center all the content. -->
+
+        <div class="container marketing">
+
+            <!-- Three columns of text below the carousel -->
+            <div class="row">
+
+                <div class="col-lg-4">
+                    <img loading="lazy" width="320" height="180" src="{{ asset('images/illustration-1.png') }}" />
+                    <h2 class="fw-bold">Inspirer la confiance</h2>
+                    <p class="text-start">Avec plus de clics, la reconnaissance de la marque et la confiance des consommateurs dans vos communications augmentent, ce qui à son tour inspire encore plus d'engagement avec vos liens.</p>
+                </div>
+
+                <div class="col-lg-4">
+                    <img loading="lazy" width="320" height="180" src="{{ asset('images/illustration-2.png') }}" />
+
+                    <h2 class="fw-bold">Boostez vos résultats</h2>
+                    <p class="text-start">En plus d'une meilleure délivrabilité et d'un meilleur taux de clics, des statistiques au niveau des liens vous donnent un aperçu crucial de votre engagement afin que votre équipe puisse prendre des décisions plus judicieuses concernant son contenu et ses communications.</p>
+
+                </div><!-- /.col-lg-4 -->
+
+                <div class="col-lg-4">
+                    <img loading="lazy" width="320" height="180" src="{{ asset('images/illustration-3.png') }}" />
+                    <h2 class="fw-bold">Prenez le contrôle</h2>
+                    <p class="text-start">Prenez le crédit de votre contenu et apprenez-en plus sur la façon dont il est consommé en activant l'auto-branding, une fonctionnalité qui garantit que votre marque reste dans tout lien raccourci par quelqu'un pointant vers votre site Web.</p>
+
+                </div>
+
+            </div><!-- /.row -->
+
+
+            <hr class="featurette-divider">
+
+
+        </div><!-- /.container -->
+
+        <section class="col col-lg-10 mx-auto mb-5">
+            <div class="card" id="shortenCard">
+                <div class="card-body bg-light">
+                    <form id="shortenForm">
+                        <div class="col">
+                            <div class="input-group">
+                                <input type="text" class="form-control form-control-lg" name="url" id="url" placeholder="Votre adresse à réduire" autocomplete="off" required>
+                                <button type="submit" class="btn btn-lg btn-success" id="btnShortenUrl">Réduire l'URL</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="container">
+            <p>&copy; Pentiminax 2021</p>
+        </footer>
+    </main>
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('home') }}
+{% endblock %}

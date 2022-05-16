@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes liens{% endblock %}
+
+{% block body %}
+
+    <div class="container mt-5">
+
+        <div class="row">
+            <section class="col-lg-6 col-md-12 mx-lg-auto" id="linksSection">
+                <div class="list-group">
+                    {% for url in urls %}
+                        <div class="list-group-item list-group-item-action" id="link_{{ url.hash }}" data-hash="{{ url.hash }}">
+
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">{{ url.domain }}</h5>
+                                <small>{{ url.createdAt|date('d/m/Y') }}</small>
+                            </div>
+
+                            <p class="float-start mb-1 fw-bold">
+                                {{ url.getAllClicks() }}
+                                <i class="far fa-chart-bar"></i>
+                            </p>
+
+                            <div class="d-flex w-100 justify-content-between">
+                                <a class="text-danger fw-bold" id="anchor_{{ url.hash }}" href="{{ url.link }}" target="_blank">{{ url.link }}</a>
+                            </div>
+
+                        </div>
+                    {% endfor %}
+                </div>
+            </section>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-lg-4 col-md-12 justify-content-between mx-lg-auto">
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex w-100 justify-content-between" id="actions">
+                            <button class="btn btn-sm btn-primary" id="btnCopy" disabled>Copier</button>
+                            <button class="btn btn-sm btn-success" id="btnStats" disabled>Statistiques</button>
+                            <button class="btn btn-sm btn-danger" id="btnDelete" disabled>Supprimer</button>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="position-fixed bottom-0 end-0 p-3">
+            <div class="toast" id="copyToast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <strong class="me-auto">Raccourcisseur d'URL</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    Le lien a bien été copié !
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('list') }}
+{% endblock %}

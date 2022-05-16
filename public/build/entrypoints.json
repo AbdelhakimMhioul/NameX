@@ -1,0 +1,34 @@
+{
+  "entrypoints": {
+    "app": {
+      "js": [
+        "/build/runtime.js",
+        "/build/vendors-node_modules_core-js_internals_export_js-node_modules_core-js_internals_function-bind-7be9a5.js",
+        "/build/vendors-node_modules_core-js_internals_array-iteration_js-node_modules_core-js_internals_dom--d86934.js",
+        "/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_chart_js_dist_Chart_j-186036.js",
+        "/build/app.js"
+      ],
+      "css": [
+        "/build/app.css"
+      ]
+    },
+    "home": {
+      "js": [
+        "/build/runtime.js",
+        "/build/vendors-node_modules_core-js_internals_export_js-node_modules_core-js_internals_function-bind-7be9a5.js",
+        "/build/vendors-node_modules_core-js_modules_es_promise_js.js",
+        "/build/home.js"
+      ]
+    },
+    "list": {
+      "js": [
+        "/build/runtime.js",
+        "/build/vendors-node_modules_core-js_internals_export_js-node_modules_core-js_internals_function-bind-7be9a5.js",
+        "/build/vendors-node_modules_core-js_modules_es_promise_js.js",
+        "/build/vendors-node_modules_core-js_internals_array-iteration_js-node_modules_core-js_internals_dom--d86934.js",
+        "/build/vendors-node_modules_bootstrap_dist_js_bootstrap_esm_js-node_modules_core-js_modules_es_array-e7a6be.js",
+        "/build/list.js"
+      ]
+    }
+  }
+}
