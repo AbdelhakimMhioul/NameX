@@ -57,8 +57,8 @@ class UrlStatisticService
             'datasets' => [
                 [
                     'label' => 'Nombre total de clics',
-                    'backgroundColor' => 'rgb(13,110, 253)',
-                    'borderColor' => 'rgb(13,110, 253)',
+                    'backgroundColor' => '#DF3',
+                    'borderColor' => '#DF3',
                     'data' => $data
                 ]
             ]

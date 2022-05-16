@@ -19,9 +19,11 @@
   <body>
     {% include 'includes/header.html' %}
 
-    {% block body %}
-    {% endblock %}
+    <div class="my-5">
+      {% block body %}
 
+      {% endblock %}
+    </div>
     {% include 'includes/footer.html' %}
   </body>
 </html>
