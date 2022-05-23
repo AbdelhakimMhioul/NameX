@@ -1,6 +1,6 @@
 # NameX
 
-'NameX' Url Shortener App Using the MD5 Algorithm
+`NameX` Url Shortener App Using the MD5 Algorithm
 
 ## Collaborators
 
